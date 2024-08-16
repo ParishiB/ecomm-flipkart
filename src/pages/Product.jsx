@@ -5,11 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import useProducts from "../hooks/useProducts";
 import useCart from "../hooks/useCart";
 import { addToCart, removeFromCart } from "./../state/product/productSlice";
+import { MdOutlineDelete } from "react-icons/md";
 
 const Product = () => {
   const { id } = useParams();
   const { product, loading, error } = useProducts(id);
-  const { cart, handleAddToCart, handleRemoveFromCart } = useCart();
+  const { cart, handleAddToCart, handleRemoveFromCart, RemoveParticularItem } =
+    useCart();
 
   if (loading) {
     return <div className="text-black p-20">Loading...</div>;
@@ -38,7 +40,10 @@ const Product = () => {
         />
         <p className="text-gray-800 mb-4">{product.description}</p>
         <p className="text-lg font-semibold">₹{product.price}</p>
-        <button onClick={handleRemoveFromCart} disabled={!isInCart}>
+        <button
+          onClick={() => RemoveParticularItem(product)}
+          disabled={!isInCart}
+        >
           Remove from Cart
         </button>
         <button onClick={handleAddToCart} disabled={isInCart}>

@@ -1,5 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart } from "./../state/product/productSlice";
+import {
+  addToCart,
+  removeFromCart,
+  deleteParticularItemsCart,
+} from "./../state/product/productSlice";
 
 const useCart = () => {
   const dispatch = useDispatch();
@@ -13,7 +17,11 @@ const useCart = () => {
     dispatch(removeFromCart(product));
   };
 
-  return { cart, handleAddToCart, handleRemoveFromCart };
+  const RemoveParticularItem = (product) => {
+    dispatch(deleteParticularItemsCart(product));
+  };
+
+  return { cart, handleAddToCart, handleRemoveFromCart, RemoveParticularItem };
 };
 
 export default useCart;
