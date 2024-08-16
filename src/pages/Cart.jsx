@@ -1,36 +1,64 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   decreaseQuantity,
   increaseQuantity,
 } from "../state/product/productSlice";
 
+const CartItem = ({ item, onIncrease, onDecrease }) => (
+  <div key={item.id} className="border p-4 rounded-lg shadow-lg mb-4">
+    <div className="grid grid-cols-[30%_auto]">
+      <div>
+        <img
+          src={item.image}
+          alt={item.title}
+          className="w-full h-48 object-cover mb-2"
+        />
+      </div>
+      <div className="p-10">
+        <h2 className="text-lg font-semibold mb-2">{item.title}</h2>
+        <p className="text-gray-600">₹{item.price}</p>
+        <div className="flex">
+          <button className="border p-2" onClick={() => onDecrease(item)}>
+            -
+          </button>
+          <p className="text-gray-600 p-5">{item.quantity}</p>
+          <button className="border p-2" onClick={() => onIncrease(item)}>
+            +
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.product.cart);
 
-  console.log("Cart items:", cart);
-  cart.forEach((item) =>
-    console.log(
-      `Item ${item.id} - Quantity: ${item.quantity}, Price: ${item.price}`
-    )
+  const totalPrice = useMemo(
+    () =>
+      cart.reduce((total, item) => {
+        const quantity = item.quantity ?? 0;
+        const price = item.price ?? 0;
+        return total + quantity * price;
+      }, 0),
+    [cart]
   );
 
-  const totalPrice = useMemo(() => {
-    return cart.reduce((total, item) => {
-      const quantity = item.quantity ?? 0;
-      const price = item.price ?? 0;
-      return total + quantity * price;
-    }, 0);
-  }, [cart]);
+  const handleIncrease = useCallback(
+    (item) => {
+      dispatch(increaseQuantity(item));
+    },
+    [dispatch]
+  );
 
-  const handleIncrease = (item) => {
-    dispatch(increaseQuantity(item));
-  };
-
-  const handleDecrease = (item) => {
-    dispatch(decreaseQuantity(item));
-  };
+  const handleDecrease = useCallback(
+    (item) => {
+      dispatch(decreaseQuantity(item));
+    },
+    [dispatch]
+  );
 
   return (
     <div className="text-black p-20">
@@ -40,36 +68,12 @@ const Cart = () => {
       ) : (
         <div>
           {cart.map((item) => (
-            <div key={item.id} className="border p-4 rounded-lg shadow-lg mb-4">
-              <div className="grid grid-cols-[30%_auto]">
-                <div>
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-48 object-cover mb-2"
-                  />
-                </div>
-                <div className="p-10">
-                  <h2 className="text-lg font-semibold mb-2">{item.title}</h2>
-                  <p className="text-gray-600">₹{item.price}</p>
-                  <div className="flex">
-                    <button
-                      className="border p-2"
-                      onClick={() => handleDecrease(item)}
-                    >
-                      -
-                    </button>
-                    <p className="text-gray-600 p-5">{item.quantity}</p>
-                    <button
-                      className="border p-2"
-                      onClick={() => handleIncrease(item)}
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <CartItem
+              key={item.id}
+              item={item}
+              onIncrease={handleIncrease}
+              onDecrease={handleDecrease}
+            />
           ))}
           <div className="border-t pt-4 mt-4">
             <h2 className="text-xl font-semibold">
