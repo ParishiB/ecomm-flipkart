@@ -1,8 +1,9 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Cart from "../pages/Cart";
+import Cart from "../pages/cart/Cart";
 import Commerce from "../pages/Commerce";
 import Product from "../pages/Product";
+
 const Router = () => {
   return (
     <Routes>

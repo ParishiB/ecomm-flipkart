@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { getProductById, getProducts } from "../Util/httpClient";
 
 const useProducts = (id = null) => {
   const [products, setProducts] = useState([]);
@@ -11,12 +11,10 @@ const useProducts = (id = null) => {
     const fetchProducts = async () => {
       try {
         if (id) {
-          const response = await axios.get(
-            `https://fakestoreapi.com/products/${id}`
-          );
+          const response = getProductById(id);
           setProduct(response.data);
         } else {
-          const response = await axios.get("https://fakestoreapi.com/products");
+          const response = await getProducts();
           setProducts(response.data);
         }
       } catch (error) {
