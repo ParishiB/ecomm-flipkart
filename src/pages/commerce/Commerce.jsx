@@ -159,14 +159,14 @@
 // export default Commerce;
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import useProducts from "../hooks/useProducts";
+import useProducts from "../../hooks/useProducts";
 import {
   addToCart,
   decreaseQuantity,
   increaseQuantity,
-} from "../state/product/productSlice";
-import Pagination from "../components/Pagination";
-import Filter from "../components/Filter";
+} from "../../state/product/productSlice";
+import Pagination from "../../components/Pagination";
+import Filter from "../../components/Filter";
 import FlipkartAssured from "../assets/FlipkartAssured.png";
 
 const Commerce = () => {

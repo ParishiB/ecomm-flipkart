@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useCallback } from "react";
-import useProducts from "../hooks/useProducts";
-import useCart from "../hooks/useCart";
+import useProducts from "../../hooks/useProducts";
+import useCart from "../../hooks/useCart";
 
 const Product = () => {
   const { id } = useParams();
