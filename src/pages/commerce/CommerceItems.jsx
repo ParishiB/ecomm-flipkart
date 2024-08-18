@@ -20,12 +20,7 @@ const CommerceItems = ({
 
           return (
             <div key={item.id} className="p-1 shadow-lg">
-              <Link
-                to={`/product/${item.id}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-4 rounded-lg block"
-              >
+              <Link to={`/product/${item.id}`} className="p-4 rounded-lg block">
                 <img
                   src={item.image}
                   alt={item.title}
