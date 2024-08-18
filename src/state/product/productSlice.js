@@ -78,6 +78,11 @@ const productSlice = createSlice({
         saveToLocalStorage(state.cart);
       }
     },
+    clearCart: (state) => {
+      state.cart = [];
+      state.cartCount = 0; // Ensure cart count is reset
+      saveToLocalStorage(state.cart);
+    },
   },
 });
 
@@ -87,5 +92,6 @@ export const {
   increaseQuantity,
   decreaseQuantity,
   deleteParticularItemsCart,
+  clearCart,
 } = productSlice.actions;
 export default productSlice.reducer;

@@ -5,7 +5,7 @@ const CartItem = React.memo(({ item, onIncrease, onDecrease, onDelete }) => {
   const { isMobileView, isLargeMobile } = useScreenInfo();
 
   return (
-    <div key={item.id} className="border p-4 rounded-lg shadow-lg mb-4">
+    <div key={item.id} className="border p-6 rounded-lg shadow-lg mb-4 ">
       <div
         className={`${
           isMobileView || isLargeMobile

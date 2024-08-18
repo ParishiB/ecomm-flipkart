@@ -59,9 +59,9 @@ const Header = () => {
             onClick={handleNavigateToCart}
             className={`flex items-center ${animate ? "animate-bounce" : ""}`}
           >
-            <BsCart className="h-[30px]" />
+            <BsCart className="" />
             {cartCount > 0 && (
-              <span className="bg-red-600 text-white rounded-full px-2 py-1 text-xs ml-2 relative flex items-center">
+              <span className="bg-red-600 text-white rounded-full px-2 py-1 text-xs -ml-1 relative flex items-center">
                 {cartCount}
                 {animate && (
                   <>

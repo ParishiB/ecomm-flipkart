@@ -13,7 +13,7 @@ const Cart = () => {
   const { isMobileView, isLargeMobile } = screenInfo;
 
   return (
-    <div className="text-black p-20">
+    <div className="text-black p-10">
       <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
 
       {cart.length === 0 ? (
