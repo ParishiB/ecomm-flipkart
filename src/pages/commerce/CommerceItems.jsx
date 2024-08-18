@@ -2,7 +2,7 @@ import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { BsCart } from "react-icons/bs";
 import FlipkartAssured from "../../assets/FlipkartAssured.png";
-
+import { Link } from "react-router-dom";
 const CommerceItems = ({
   currentProducts,
   cart,
