@@ -19,9 +19,13 @@ const CommerceItems = ({
             cart.find((cartItem) => cartItem.id === item.id)?.quantity || 0;
 
           return (
-            <div key={item.id} className="p-1 shadow-lg">
-              <a
-                href={`/product/${item.id}`}
+            <div
+              key={item.id}
+              className="p-1 shadow-lg"
+              onClick={navigateToProducts}
+            >
+              <Link
+                to={`/product/${item.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-4 rounded-lg block"
@@ -31,7 +35,7 @@ const CommerceItems = ({
                   alt={item.title}
                   className="w-full h-48 object-cover mb-2"
                 />
-              </a>
+              </Link>
               <div className="bg-white transform transition-transform duration-300 hover:scale-y-105 hover:translate-y-[-24px] p-4 overflow-hidden">
                 <img src={FlipkartAssured} className="h-[20px] mb-2" />
                 <h2 className="text-lg font-semibold mb-2 truncate">
