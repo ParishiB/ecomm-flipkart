@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import useProducts from "../../hooks/useProducts";
 import { ClipLoader } from "react-spinners";

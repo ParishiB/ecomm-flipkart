@@ -9,9 +9,6 @@ const useProducts = (id = null) => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      setLoading(true);
-      setError(null);
-
       try {
         if (id) {
           const response = await getProductById(id);
