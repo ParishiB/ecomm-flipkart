@@ -38,17 +38,18 @@ const NavbarData = [
     name: "More",
   },
 ];
+
 const Navbar = () => {
   return (
-    <div className="flex w-full items-center px-6">
-      {NavbarData.map((item, index) => (
-        <div key={index} className="flex items-center gap-10 text-sm font-bold">
-          <div className="flex mr-20 ">
+    <div className="navbar w-full px-6 overflow-x-auto">
+      <div className="flex items-center gap-20 text-sm font-bold whitespace-nowrap">
+        {NavbarData.map((item, index) => (
+          <div key={index} className="flex items-center gap-2 text-gray-700">
             {item.name}
             <RiArrowDropDownLine className="text-gray-500" />
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

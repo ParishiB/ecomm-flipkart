@@ -11,7 +11,7 @@ const useProducts = (id = null) => {
     const fetchProducts = async () => {
       try {
         if (id) {
-          const response = getProductById(id);
+          const response = await getProductById(id);
           setProduct(response.data);
         } else {
           const response = await getProducts();

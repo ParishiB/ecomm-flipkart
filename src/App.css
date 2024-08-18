@@ -1,0 +1,6 @@
+.app::-webkit-scrollbar {
+  width: 0;
+}
+.navbar::-webkit-scrollbar {
+  width: 0;
+}
