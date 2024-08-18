@@ -49,7 +49,9 @@ const Filter = ({ products, setFilteredProducts }) => {
           />
           <div className="flex items-center">
             <span className="mr-1">{label}</span>
-            <span className="ml-1 text-yellow-500">{icon}</span>
+            <span className="ml-1 text-yellow-500">
+              <IoStarSharp />
+            </span>
             <span className="ml-2"> & above</span>
           </div>
         </label>
