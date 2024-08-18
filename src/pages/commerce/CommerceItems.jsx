@@ -19,11 +19,7 @@ const CommerceItems = ({
             cart.find((cartItem) => cartItem.id === item.id)?.quantity || 0;
 
           return (
-            <div
-              key={item.id}
-              className="p-1 shadow-lg"
-              onClick={navigateToProducts}
-            >
+            <div key={item.id} className="p-1 shadow-lg">
               <Link
                 to={`/product/${item.id}`}
                 target="_blank"
